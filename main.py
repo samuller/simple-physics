@@ -1,3 +1,4 @@
+import sys
 import numpy
 import pygame
 
@@ -66,6 +67,9 @@ def main_loop():
         draw_fps(screen, clock, font)
         pygame.display.flip()
         clock.tick(FRAMERATE_LIMIT)
+
+    pygame.quit()
+    sys.exit()
 
 
 if __name__ == "__main__":
