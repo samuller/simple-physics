@@ -3,6 +3,7 @@ import pygame
 
 WIDTH = 640
 HEIGHT = 480
+FRAMERATE_LIMIT = 120
 
 LEFT_CLICK = 1
 MIDDLE_CLICK = 2
@@ -42,6 +43,7 @@ def handle_event(event):
 
 def main_loop():
     pygame.init()
+    clock = pygame.time.Clock()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Simple physics')
 
@@ -55,6 +57,7 @@ def main_loop():
 
         draw(screen)
         pygame.display.flip()
+        clock.tick(FRAMERATE_LIMIT)
 
 
 if __name__ == "__main__":
