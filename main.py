@@ -41,10 +41,17 @@ def handle_event(event):
                 balls.remove(remove_el)
 
 
+def draw_fps(screen, clock, font):
+    fps = int(clock.get_fps())
+    fps_surface = font.render(str(fps), True, pygame.Color('white'))
+    screen.blit(fps_surface, (0, 0))
+
+
 def main_loop():
     pygame.init()
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    font = pygame.font.Font(None, 30)
     pygame.display.set_caption('Simple physics')
 
     done = False
@@ -56,6 +63,7 @@ def main_loop():
             handle_event(event)
 
         draw(screen)
+        draw_fps(screen, clock, font)
         pygame.display.flip()
         clock.tick(FRAMERATE_LIMIT)
 
