@@ -1,5 +1,4 @@
 import sys
-import numpy
 import pygame
 from physics import *
 
@@ -16,10 +15,12 @@ SCROLL_DOWN = 5
 BALL_COLOR = (255, 128, 0)
 BALL_RADIUS = 10
 
+
 def new_ball(pos, spd):
     return PhysicsObject(
         ObjectType.BALL, props=(BALL_RADIUS,),
         pos=pos, spd=spd)
+
 
 objects = [new_ball(pos=(90, 90), spd=(+1, +1))]
 
@@ -28,15 +29,15 @@ def draw(screen):
     color = (32, 64, 96)
     pygame.draw.rect(screen, color, pygame.Rect(0, 0, WIDTH, HEIGHT))
 
-    for object in objects:
-        pygame.draw.circle(screen, BALL_COLOR, object.pos, BALL_RADIUS)
+    for obj in objects:
+        pygame.draw.circle(screen, BALL_COLOR, obj.pos, BALL_RADIUS)
 
 
 def handle_event(event):
     if event.type == pygame.MOUSEBUTTONDOWN:
         if event.button == LEFT_CLICK:
             pos = pygame.mouse.get_pos()
-            objects.append(new_ball(pos=pos, spd=(-1,-1)))
+            objects.append(new_ball(pos=pos, spd=(-1, -1)))
         if event.button == RIGHT_CLICK:
             pos = pygame.mouse.get_pos()
             remove_el = None
